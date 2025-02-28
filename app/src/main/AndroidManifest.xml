@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppSanLuisgonzaga"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".principal.Bievenido"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".principal.Opciones"
+            android:exported="true"/>
+
+        <activity
+            android:name=".principal.Login"
+            android:exported="true"/>
+
+        <activity
+            android:name=".principal.Registro"
+            android:exported="true"/>
+
+        <activity
+            android:name=".bandejas.ApartadoPrincipal"
+            android:exported="true"/>
+
+
     </application>
 
 </manifest>

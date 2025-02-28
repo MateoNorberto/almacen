@@ -4,27 +4,36 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etLoginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre de usuario"
         android:layout_marginTop="50dp"/>
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
-        android:layout_below="@id/etUsername"
+        android:layout_below="@id/etLoginUsername"
         android:layout_marginTop="20dp"
         android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar sesión"
+        android:layout_below="@id/etLoginPassword"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btnGoToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrarse"
-        android:layout_below="@id/etPassword"
+        android:layout_below="@id/btnLogin"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>
