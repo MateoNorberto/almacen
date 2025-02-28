@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.app_san_luis_gonzaga.principal.MainActivity;
 import com.example.app_san_luis_gonzaga.R;
 
 public class MainActivity extends AppCompatActivity {
