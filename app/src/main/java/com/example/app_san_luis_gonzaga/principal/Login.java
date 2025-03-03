@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_san_luis_gonzaga.R;
-import com.example.app_san_luis_gonzaga.principal.Registro;
 import com.example.app_san_luis_gonzaga.basedate.DatabaseHelper;
 
 public class Login extends AppCompatActivity {
@@ -31,31 +30,60 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnGoToRegister = findViewById(R.id.btnGoToRegister);
 
+        // Botón de inicio de sesión
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etLoginUsername.getText().toString();
-                String password = etLoginPassword.getText().toString();
-
-                if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(Login.this, "Por favor, ingresa todos los campos", Toast.LENGTH_SHORT).show();
-                } else {
-                    boolean isValidUser = dbHelper.checkUser(username, password);
-                    if (isValidUser) {
-                        Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                        // Aquí puedes redirigir a otra actividad, por ejemplo, al "HomeActivity"
-                    } else {
-                        Toast.makeText(Login.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                loginUser();
             }
         });
 
+        // Botón de registro que también inicia sesión automáticamente
         btnGoToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, Registro.class));
+                registerAndLoginUser();
             }
         });
+    }
+
+    private void loginUser() {
+        String username = etLoginUsername.getText().toString().trim();
+        String password = etLoginPassword.getText().toString().trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Por favor, ingresa todos los campos", Toast.LENGTH_SHORT).show();
+        } else {
+            boolean isValidUser = dbHelper.checkUser(username, password);
+            if (isValidUser) {
+                Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                goToHome();
+            } else {
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void registerAndLoginUser() {
+        String username = etLoginUsername.getText().toString().trim();
+        String password = etLoginPassword.getText().toString().trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Por favor, ingresa todos los campos", Toast.LENGTH_SHORT).show();
+        } else {
+            boolean isRegistered = dbHelper.insertUser(username, password);
+            if (isRegistered) {
+                Toast.makeText(this, "Registro exitoso. Iniciando sesión...", Toast.LENGTH_SHORT).show();
+                goToHome();  // Redirigir al usuario después del registro
+            } else {
+                Toast.makeText(this, "Error al registrar. Intenta con otro usuario.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void goToHome() {
+        Intent intent = new Intent(Login.this,Login.class);
+        startActivity(intent);
+        finish();  // Cierra la pantalla de login
     }
 }

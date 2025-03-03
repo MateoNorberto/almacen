@@ -40,7 +40,7 @@ public class Registro extends AppCompatActivity {
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Registro.this, "Por favor, ingresa todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean isUserAdded = dbHelper.addUser(username, password);
+                    boolean isUserAdded = dbHelper.insertUser(username, password);
                     if (isUserAdded) {
                         Toast.makeText(Registro.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Registro.this, Login.class));
