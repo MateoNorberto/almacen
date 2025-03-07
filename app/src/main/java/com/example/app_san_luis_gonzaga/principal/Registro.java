@@ -13,40 +13,48 @@ import com.example.app_san_luis_gonzaga.R;
 import com.example.app_san_luis_gonzaga.basedate.DatabaseHelper;
 import com.example.app_san_luis_gonzaga.principal.Login;
 
-
 public class Registro extends AppCompatActivity {
 
-    private EditText etUsername, etPassword;
-    private Button btnRegister;
+    private EditText etNombre, etTipoProducto, etNumeroSerie;
+    private Button btnRegistrar;
     private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
+        setContentView(R.layout.registro); // Asegúrate de que el nombre del archivo XML es correcto
 
         dbHelper = new DatabaseHelper(this);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnRegister = findViewById(R.id.btnRegister);
+        // Asignación de los EditText y Button usando los IDs correctos del XML
+        etNombre = findViewById(R.id.etNombre); // Nombre del producto
+        etTipoProducto = findViewById(R.id.tvTipoProducto); // Tipo de producto
+        etNumeroSerie = findViewById(R.id.etNumeroSerie); // Número de serie
+        btnRegistrar = findViewById(R.id.btnRegistrar); // Botón de registrar
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
+                String nombre = etNombre.getText().toString().trim(); // Nombre del producto
+                String tipoProducto = etTipoProducto.getText().toString().trim(); // Tipo de producto
+                String numeroSerie = etNumeroSerie.getText().toString().trim(); // Número de serie
 
-                if (username.isEmpty() || password.isEmpty()) {
+                if (nombre.isEmpty() || tipoProducto.isEmpty() || numeroSerie.isEmpty()) {
+                    // Si alguno de los campos está vacío, mostrar mensaje de error
                     Toast.makeText(Registro.this, "Por favor, ingresa todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean isUserAdded = dbHelper.insertUser(username, password);
-                    if (isUserAdded) {
-                        Toast.makeText(Registro.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Registro.this, Login.class));
-                        finish();
+                    // Registrar producto usando el método del DatabaseHelper
+                    String fechaLlegada = "2025-03-07";  // Aquí puedes poner una fecha dinámica si lo deseas
+                    boolean isProductAdded = dbHelper.insertarProducto(nombre, numeroSerie, tipoProducto, fechaLlegada);
+                    if (isProductAdded) {
+                        Toast.makeText(Registro.this, "Producto registrado exitosamente", Toast.LENGTH_SHORT).show();
+
+                        // Redirigir a la actividad de Opciones (o la que desees)
+                        // Asegúrate de que 'Opciones.class' esté bien definida
+                        startActivity(new Intent(Registro.this, Opciones.class));
+                        finish(); // Finaliza la actividad actual
                     } else {
-                        Toast.makeText(Registro.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registro.this, "Error al registrar producto", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

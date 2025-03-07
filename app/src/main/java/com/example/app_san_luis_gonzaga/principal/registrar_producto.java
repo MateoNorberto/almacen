@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.app_san_luis_gonzaga.R;
 import com.example.app_san_luis_gonzaga.basedate.DatabaseHelper;
 
-public class RegistrarProducto extends AppCompatActivity {
+public class registrar_producto extends AppCompatActivity {
 
     private EditText etNombre, etNumeroSerie, etTipo, etFechaLlegada;
     private Button btnGuardarProducto;
@@ -20,16 +20,18 @@ public class RegistrarProducto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.index_registrar); // Asegúrate de que el nombre del archivo XML es correcto
+        setContentView(R.layout.item_producto); // Aquí debes referenciar el nuevo layout XML
 
         dbHelper = new DatabaseHelper(this);
 
+        // Inicializar los campos
         etNombre = findViewById(R.id.etNombre);
         etNumeroSerie = findViewById(R.id.etNumeroSerie);
         etTipo = findViewById(R.id.etTipo);
         etFechaLlegada = findViewById(R.id.etFechaLlegada);
         btnGuardarProducto = findViewById(R.id.btnGuardarProducto);
 
+        // Acción del botón para guardar el producto
         btnGuardarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,11 +41,13 @@ public class RegistrarProducto extends AppCompatActivity {
     }
 
     private void registrarProducto() {
+        // Obtener los valores de los campos
         String nombre = etNombre.getText().toString().trim();
         String numeroSerie = etNumeroSerie.getText().toString().trim();
         String tipo = etTipo.getText().toString().trim();
         String fechaLlegada = etFechaLlegada.getText().toString().trim();
 
+        // Validar si los campos no están vacíos
         if (nombre.isEmpty() || numeroSerie.isEmpty() || tipo.isEmpty() || fechaLlegada.isEmpty()) {
             Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
             if (nombre.isEmpty()) etNombre.requestFocus();
@@ -53,13 +57,13 @@ public class RegistrarProducto extends AppCompatActivity {
             return;
         }
 
+        // Insertar el producto en la base de datos
         boolean isInserted = dbHelper.insertarProducto(nombre, numeroSerie, tipo, fechaLlegada);
         if (isInserted) {
             Toast.makeText(this, "Producto registrado con éxito", Toast.LENGTH_SHORT).show();
-            finish(); // Cierra la actividad y vuelve a Index
+            finish(); // Cierra la actividad y vuelve a la actividad anterior
         } else {
             Toast.makeText(this, "Error al registrar el producto", Toast.LENGTH_SHORT).show();
         }
     }
 }
-

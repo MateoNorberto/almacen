@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <!-- Botón para registrar producto -->
+
+    <!-- Botón para mostrar productos registrados -->
+    <Button
+        android:id="@+id/btnRegistrarProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#4CAF50"
+        android:padding="10dp"
+        android:text="Registrar Producto"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnMostrarProductos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mostrar Productos"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2196F3"
+        android:padding="10dp"
+        android:textSize="18sp"/>
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:gravity="center">
+
+    <!-- Nombre del producto -->
+    <TextView
+        android:id="@+id/tvNombreProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa el nombre del producto"
+        android:inputType="text"/>
+
+    <!-- Número de serie -->
+    <TextView
+        android:id="@+id/tvNumeroSerie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de Serie"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/etNumeroSerie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa el número de serie"
+        android:inputType="text"/>
+
+    <!-- Tipo de producto -->
+    <TextView
+        android:id="@+id/tvTipoProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de Producto"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/etTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa el tipo de producto"
+        android:inputType="text"/>
+
+    <!-- Fecha de llegada -->
+    <TextView
+        android:id="@+id/tvFechaLlegada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Llegada"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/etFechaLlegada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa la fecha de llegada"
+        android:inputType="date"/>
+
+    <!-- Botón para guardar el producto -->
+    <Button
+        android:id="@+id/btnGuardarProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar Producto"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>

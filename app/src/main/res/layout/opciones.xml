@@ -8,9 +8,6 @@
     android:background="@drawable/fnd">
 
     <!-- Logo Grande -->
-
-    <!-- Botón Login -->
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="331dp"
@@ -20,8 +17,7 @@
         android:contentDescription="Logo de la App"
         android:src="@drawable/sanluislogo" />
 
-    <!-- Botón Registro -->
-
+    <!-- Botón Login -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
@@ -32,6 +28,7 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
+    <!-- Botón Registro -->
     <Button
         android:id="@+id/btnRegistro"
         android:layout_width="wrap_content"
